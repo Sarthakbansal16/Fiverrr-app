@@ -55,7 +55,7 @@ function Home() {
             </p>
           </div>
           <div className="item">
-            <video src="./img/video.mp4" controls />
+            <video src="https://download.blender.org/durian/trailer/sintel_trailer-720p.mp4"  controls muted autoPlay/>
           </div>
         </div>
       </div>
