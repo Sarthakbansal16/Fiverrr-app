@@ -62,7 +62,7 @@ export const login = async (req, res, next) => {
   }
 };
 
-const logoutUser = asyncHandler(async(req,res) => {
+export const logoutUser = asyncHandler(async(req,res) => {
   const options = {
       httpOnly: true,
       secure:true,
