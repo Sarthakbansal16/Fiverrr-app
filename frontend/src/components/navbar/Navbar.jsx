@@ -47,14 +47,14 @@ function Navbar() {
           <span>Fiverr Business</span>
           <span>Explore</span>
           <span>English</span>
-          {!currentUser?.isSeller && <span>Become a Seller</span>}
+          {currentUser && !currentUser.data.user?.isSeller && <span>Become a Seller</span>}
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
-              <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
-              <span>{currentUser?.username}</span>
+              <img src={currentUser.data.user?.img || "/img/noavatar.jpg"} alt="" />
+              <span>{currentUser.data.user?.username}</span>
               {open && (
                 <div className="options">
-                  {currentUser.isSeller && (
+                  {currentUser.data.user?.isSeller && (
                     <>
                       <Link className="link" to="/mygigs">
                         Gigs
