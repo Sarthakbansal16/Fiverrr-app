@@ -24,7 +24,7 @@ const GigCard = ({ item }) => {
           ) : (
             <div className="user">
               <img src={data.img || "/img/noavatar.jpg"} alt="" />
-              <span>{data.username}</span>
+              <span>{data.data.username}</span>
             </div>
           )}
           <p>{item.desc}</p>

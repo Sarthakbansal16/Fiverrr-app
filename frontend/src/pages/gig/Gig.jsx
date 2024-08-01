@@ -22,7 +22,7 @@ function Gig() {
   const {
     isLoading: isLoadingUser,
     error: errorUser,
-     data: dataU,
+    data: dataU,
   } = useQuery({
     queryKey: ["user"],
     queryFn: () =>
@@ -31,6 +31,7 @@ function Gig() {
       }),
     enabled: !!userId,
   });
+  console.log(data);
   return (
     <div className="gig">
       {isLoading ? (
@@ -50,29 +51,31 @@ function Gig() {
               "Something went wrong!"
             ) : (
               <div className="user">
-                <img
-                  className="pp"
-                  // src={dataU.img || "/img/noavatar.jpg"}
-                  alt=""
-                />
-                {/* <span>{dataU.username}</span> */}
+                <img className="pp" src={"/img/noavatar.jpg"} alt="" />
+                {/* <span>{dataU.data.username}</span> */}
                 {!isNaN(data.data.totalStars / data.data.starNumber) && (
                   <div className="stars">
-                    {Array(Math.round(data.data.totalStars / data.data.starNumber))
+                    {Array(
+                      Math.round(data.data.totalStars / data.data.starNumber)
+                    )
                       .fill()
                       .map((item, i) => (
                         <img src="/img/star.png" alt="" key={i} />
                       ))}
-                    <span>{Math.round(data.data.totalStars / data.data.starNumber)}</span>
+                    <span>
+                      {Math.round(data.data.totalStars / data.data.starNumber)}
+                    </span>
                   </div>
                 )}
               </div>
             )}
-             <Slide slidesToShow={1} arrowsScroll={1} className="slider">
-              {data.data.images.map((img) => (
-                <img key={img} src={img} alt="" />
-              ))}
-            </Slide>
+            <div className="slider">
+              <Slide slidesToShow={1} arrowsScroll={1}>
+                {data.data.images.map((img) => (
+                  <img key={img} src={img} alt="" />
+                ))}
+              </Slide>
+            </div>
             <h2>About This Gig</h2>
             <p>{data.data.desc}</p>
             {isLoadingUser ? (
@@ -83,18 +86,24 @@ function Gig() {
               <div className="seller">
                 <h2>About The Seller</h2>
                 <div className="user">
-                  {/* <img src={dataU.img || "/img/noavatar.jpg"} alt="" /> */}
+                  <img src={"/img/noavatar.jpg"} alt="" />
                   <div className="info">
                     {/* <span>{dataU.username}</span> */}
                     {!isNaN(data.data.totalStars / data.data.starNumber) && (
                       <div className="stars">
-                        {Array(Math.round(data.data.totalStars / data.data.starNumber))
+                        {Array(
+                          Math.round(
+                            data.data.totalStars / data.data.starNumber
+                          )
+                        )
                           .fill()
                           .map((item, i) => (
                             <img src="/img/star.png" alt="" key={i} />
                           ))}
                         <span>
-                          {Math.round(data.data.totalStars /data.data.starNumber)}
+                          {Math.round(
+                            data.data.totalStars / data.data.starNumber
+                          )}
                         </span>
                       </div>
                     )}
@@ -156,7 +165,7 @@ function Gig() {
               ))}
             </div>
             <Link to={`/pay/${id}`}>
-            <button>Continue</button>
+              <button>Continue</button>
             </Link>
           </div>
         </div>

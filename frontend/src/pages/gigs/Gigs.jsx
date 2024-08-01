@@ -17,8 +17,7 @@ function Gigs() {
     queryKey: ["gigs"],
     queryFn: () =>
       newRequest
-        .get(
-          `/gigs${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
+        .get(`/gigs${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
         )
         .then((res) => {
           return res.data;
@@ -60,7 +59,11 @@ function Gigs() {
             <span className="sortType">
               {sort === "sales" ? "Best Selling" : "Newest"}
             </span>
-            <img src="./img/downimg.png" alt="" onClick={() => setOpen(!open)} />
+            <img
+              src="./img/downimg.png"
+              alt=""
+              onClick={() => setOpen(!open)}
+            />
             {open && (
               <div className="rightMenu">
                 {sort === "sales" ? (
